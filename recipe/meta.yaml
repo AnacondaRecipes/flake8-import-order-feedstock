@@ -21,6 +21,7 @@ requirements:
     - pip
   run:
     - python
+    - enum34  # [py2k]
     - pycodestyle
     - flake8
 
