@@ -29,18 +29,20 @@ requirements:
     - flake8
 
 test:
+  requires:
+    - pip
   commands:
+    - pip check
     - flake8 --version
   imports:
     - flake8_import_order
 
 about:
   home: https://github.com/PyCQA/flake8-import-order
-  license: LGPL-3.0
+  license: LGPL-3.0-only
   license_family: LGPL
   license_file: COPYING
   summary: 'A flake8 and Pylama plugin that checks the ordering of your imports.'
-
   description: |
           A flake8 and Pylama plugin that checks the ordering of your imports.
           In general stdlib comes first, then 3rd party, then local packages,
@@ -52,6 +54,7 @@ about:
           seemingly random changes and configuration changes as we figure out
           how it should work.
   dev_url: https://github.com/PyCQA/flake8-import-order
+  doc_url: https://github.com/PyCQA/flake8-import-order
 
 extra:
   recipe-maintainers:
