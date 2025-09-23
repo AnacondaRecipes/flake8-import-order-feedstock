@@ -1,6 +1,6 @@
 {% set name = "flake8-import-order" %}
-{% set version = "0.18.2" %}
-{% set sha256 = "e23941f892da3e0c09d711babbb0c73bc735242e9b216b726616758a920d900e" %}
+{% set version = "0.19.2" %}
+{% set sha256 = "133b3c55497631e4235074fc98a95078bba817832379f22a31f0ad2455bcb0b2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/f/flake8-import-order/flake8_import_order-0.19.2.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -27,6 +27,7 @@ requirements:
     - enum34  # [py2k]
     - pycodestyle
     - flake8
+    - setuptools
 
 test:
   requires:
@@ -42,17 +43,17 @@ about:
   license: LGPL-3.0-or-later
   license_family: LGPL
   license_file: COPYING
-  summary: 'A flake8 and Pylama plugin that checks the ordering of your imports.'
+  summary: A flake8 and Pylama plugin that checks the ordering of your imports.
   description: |
-          A flake8 and Pylama plugin that checks the ordering of your imports.
-          In general stdlib comes first, then 3rd party, then local packages,
-          and that each group is individually alphabetized, see Configuration
-          section for details. It will not check anything else about the
-          imports. Merely that they are grouped and ordered correctly. This
-          plugin is under somewhat active development and is heavily influenced
-          by the personal preferences of the developers of cryptography. Expect
-          seemingly random changes and configuration changes as we figure out
-          how it should work.
+    A flake8 and Pylama plugin that checks the ordering of your imports.
+    In general stdlib comes first, then 3rd party, then local packages,
+    and that each group is individually alphabetized, see Configuration
+    section for details. It will not check anything else about the
+    imports. Merely that they are grouped and ordered correctly. This
+    plugin is under somewhat active development and is heavily influenced
+    by the personal preferences of the developers of cryptography. Expect
+    seemingly random changes and configuration changes as we figure out
+    how it should work.
   dev_url: https://github.com/PyCQA/flake8-import-order
   doc_url: https://github.com/PyCQA/flake8-import-order
 
