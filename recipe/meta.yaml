@@ -1,42 +1,46 @@
 {% set name = "flake8-import-order" %}
 {% set version = "0.19.2" %}
-{% set sha256 = "133b3c55497631e4235074fc98a95078bba817832379f22a31f0ad2455bcb0b2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/f/flake8-import-order/flake8_import_order-0.19.2.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 133b3c55497631e4235074fc98a95078bba817832379f22a31f0ad2455bcb0b2
 
 build:
-  skip: true  # [py<38]
+  skip: true  # [py<39]
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python
     - pip
     - setuptools
-    - wheel
   run:
     - python
-    - enum34  # [py2k]
-    - pycodestyle
     - flake8
+    - pycodestyle
     - setuptools
 
 test:
-  requires:
-    - pip
-  commands:
-    - pip check
-    - flake8 --version
+  source_files:
+    - tests
   imports:
     - flake8_import_order
+    - flake8_import_order.checker
+    - flake8_import_order.flake8_linter
+    - flake8_import_order.styles
+  requires:
+    - pip
+    - pytest
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest tests
+    - flake8 --version
 
 about:
   home: https://github.com/PyCQA/flake8-import-order
