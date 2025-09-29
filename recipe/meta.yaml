@@ -21,9 +21,8 @@ requirements:
     - setuptools
   run:
     - python
-    - flake8
-    - pycodestyle
     - setuptools
+    - pycodestyle
 
 test:
   source_files:
@@ -36,11 +35,11 @@ test:
   requires:
     - pip
     - pytest
+    - flake8
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - pytest tests
-    - flake8 --version
 
 about:
   home: https://github.com/PyCQA/flake8-import-order
